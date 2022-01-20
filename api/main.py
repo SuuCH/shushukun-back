@@ -1,7 +1,10 @@
+import imp
 from fastapi import FastAPI
+
+from api.routers import submit, done
 
 app = FastAPI()
 
-@app.get("/hello")
-async def hello():
-  return {"message": "hello world!"}
+app = FastAPI()
+app.include_router(submit.router)
+app.include_router(done.router)
