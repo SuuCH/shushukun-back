@@ -9,7 +9,8 @@ class Submit(Base):
 
     id = Column(Integer, primary_key=True)
     password = Column(String(1024))
-    title = Column(String(1024))
+    src = Column(String(1024))
+    error = Column(String(1024))
 
     done = relationship("Done", back_populates="submit")
 
