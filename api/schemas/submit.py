@@ -9,10 +9,15 @@ class SubmitBase(BaseModel):
     error: Optional[str] = Field(None, example="分かりません")
 
 class SubmitSrc(SubmitBase):
-  password: Optional[str] = Field(None, example="aiueo")
-
+  pass
 class SubmitSrcRsponse(SubmitSrc):
   id: int
+  password: Optional[str] = Field(None, example="aiueo")
+
+  class Config:
+    orm_mode = True
+class Submit(SubmitBase):
+  id: int 
   done: bool = Field(False, description="採点完了フラグ")
 
   class Config:
