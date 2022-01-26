@@ -5,14 +5,12 @@ from pydantic import BaseModel, Field
 
 
 class SubmitBase(BaseModel):
-    src: Optional[str] = Field(None, example="#include <stdio.h>")
-    error: Optional[str] = Field(None, example="分かりません")
-
+  src: Optional[str] = Field(None, example="#include <stdio.h>")
+  error: Optional[str] = Field(None, example="分かりません")
 class SubmitSrc(SubmitBase):
-  pass
-class SubmitSrcRsponse(SubmitSrc):
+  password: Optional[str] = Field(None, example="test1234")
+class SubmitSrcResponse(SubmitSrc):
   id: int
-  password: Optional[str] = Field(None, example="aiueo")
 
   class Config:
     orm_mode = True
