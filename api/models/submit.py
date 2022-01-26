@@ -21,4 +21,4 @@ class Done(Base):
     id = Column(Integer, ForeignKey("submits.id"), primary_key=True)
     message = Column(String(1024))
 
-    task = relationship("Task", back_populates="done")
+    submit = relationship("Submit", back_populates="done")
