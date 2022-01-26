@@ -12,5 +12,5 @@ async def list_src():
 
 @router.post("/submits", response_model=submit_schema.SubmitSrcRsponse)
 async def submit_src(submit_src_body: submit_schema.SubmitSrc):
-    return submit_schema.SubmitSrcRsponse(id=1,password="aiueo" **submit_src_body.dic())
+    return submit_schema.SubmitSrcRsponse(id=1,password="aiueo", **submit_src_body.dict())
 
