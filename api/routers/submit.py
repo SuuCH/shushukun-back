@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/submits", response_model=List[submit_schema.Submit])
-async def list_src():
-    return [submit_schema.Submit(id=1)]
+async def list_src(db: AsyncSession = Depends(get_db)):
+    return await submit_crud.get_submits_with_done(db)
 
 @router.post("/submits", response_model=submit_schema.SubmitSrcResponse)
 async def create_submit(submit_src_body: submit_schema.SubmitSrc, db: AsyncSession = Depends(get_db)):
