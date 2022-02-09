@@ -7,6 +7,8 @@ from pydantic import BaseModel, Field
 class SubmitBase(BaseModel):
   src: Optional[str] = Field(None, example="#include <stdio.h>")
   error: Optional[str] = Field(None, example="分かりません")
+  class Config:
+    orm_mode = True
 class SubmitSrc(SubmitBase):
   password: Optional[str] = Field(None, example="test1234")
 class SubmitSrcResponse(SubmitSrc):
