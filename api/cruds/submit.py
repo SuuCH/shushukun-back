@@ -1,7 +1,7 @@
-from multiprocessing.spawn import import_main_path
 from typing import List, Tuple
 
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from sqlalchemy import select
 from sqlalchemy.engine import Result
 
@@ -29,3 +29,13 @@ async def get_submits_with_done(db: AsyncSession) -> List[Tuple[int, str, str ,b
     )
   )
   return result.all()
+
+async def get_src_with_error(db: AsyncSession, user_id:int) -> Tuple[str, str]:
+  result = await db.execute(
+    select(
+      submit_model.Submit.src,
+      submit_model.Submit.error,
+    ).where(submit_model.Submit.id == user_id)
+  )
+    
+  return result.first()
